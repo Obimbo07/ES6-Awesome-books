@@ -20,5 +20,4 @@ submit.addEventListener('click', (event) => {
 
 const display = new BookShelf(container);
 display.renderBooks();
-Date();
 updateDom();
