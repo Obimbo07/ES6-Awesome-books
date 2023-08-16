@@ -1,5 +1,6 @@
 import updateDom from './modules/updateDOM.js';
 import BookShelf from './modules/books.js';
+// eslint-disable-next-line no-unused-vars
 import  Date  from './modules/date.js';
 
 const container = document.querySelector('#bookList');
