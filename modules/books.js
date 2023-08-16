@@ -1,13 +1,13 @@
 class BookShelf {
-  constructor(container, title, author) {
-    this.title = title;
+  constructor (container, title, author) {
     this.author = author;
+    this.title = title;
     this.container = container;
     this.listItem = document.createElement('ul');
   }
 
   // eslint-disable-next-line class-methods-use-this
-  Storage() {
+  storage () {
     let books = [];
     try {
       const storedBooks = localStorage.getItem('books');
@@ -24,27 +24,30 @@ class BookShelf {
     return books;
   }
 
-  updateStorage() {
-    const books = this.Storage();
-    const newBook = { title: this.title, author: this.author };
-    books.push(newBook);
+  updateStorage () {
+    const books = this.storage();
+    const newbook = {
+      'author': this.author,
+      'title': this.title
+    };
+    books.push(newbook);
     localStorage.setItem('books', JSON.stringify(books));
   }
 
-  renderBooks() {
-    const books = this.Storage();
+  renderBooks () {
+    const books = this.storage();
     this.container.innerHTML = '';
     this.listItem.innerHTML = '';
     const reversedBooks = books.slice().reverse();
     reversedBooks.forEach((book) => {
       const li = document.createElement('li');
-      const p = document.createElement('p');
+      const para = document.createElement('p');
       const removeButton = document.createElement('button');
 
-      p.textContent = `'${book.title}' by '${book.author}'`;
+      para.textContent = `'${book.title}' by '${book.author}'`;
       removeButton.textContent = 'Remove';
 
-      li.appendChild(p);
+      li.appendChild(para);
       li.appendChild(removeButton);
 
       this.listItem.appendChild(li);
@@ -58,8 +61,9 @@ class BookShelf {
     this.listItem.classList.add('book-list');
   }
 
-  removeBook(title, author) {
-    let books = this.Storage();
+  removeBook (title, author) {
+    let books = this.storage();
+    // eslint-disable-next-line max-len
     books = books.filter((book) => !(book.title === title && book.author === author));
     localStorage.setItem('books', JSON.stringify(books));
   }

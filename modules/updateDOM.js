@@ -1,4 +1,4 @@
-function updateDom() {
+const updateDom = () =>  {
   const nav = document.querySelector('.nav-items');
   const items = nav.querySelectorAll('li a');
   const targets = document.querySelectorAll('.Main');
@@ -16,6 +16,6 @@ function updateDom() {
       item.style.color = 'blue';
     });
   });
-}
+};
 
 export default updateDom;
